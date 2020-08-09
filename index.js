@@ -94,6 +94,15 @@ function buildingResponse(building_id, deep=true) {
   return res;
 }
 
+app.get("/buildings", (req, res) => {
+  res.send([
+    buildingResponse(1, false),
+    buildingResponse(2, false),
+    buildingResponse(3, false),
+    buildingResponse(4, false),
+  ])
+})
+
 app.get("/building/:id", (req, res) => {
   res.send(buildingResponse(req.params.id))
 })
