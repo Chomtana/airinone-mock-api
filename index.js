@@ -80,10 +80,14 @@ function buildingResponse(building_id, deep=true) {
     create_by: 1,
     modified_date: new Date(),
     modified_by: 1,
+
+    online_count: 4,
+    total_count: 8,
+    error_count: 1,
   }
 
   if (deep) {
-    res.floors = [
+    res.children = [
       floorResponse(1, false),
       floorResponse(2, false),
       floorResponse(3, false),
@@ -139,10 +143,14 @@ function floorResponse(floor_id, deep=true) {
     create_by: 1,
     modified_date: new Date(),
     modified_by: 1,
+
+    online_count: 4,
+    total_count: 8,
+    error_count: 1,
   }
 
   if (deep) {
-    res.rooms = [
+    res.children = [
       roomResponse(1, false),
       roomResponse(2, false),
       roomResponse(3, false),
@@ -188,16 +196,20 @@ function roomResponse(room_id, deep=true) {
       height: 0.2,
     },
 
-    building_id: 1,
+    floor_id: 1,
 
     create_date: new Date(),
     create_by: 1,
     modified_date: new Date(),
     modified_by: 1,
+
+    online_count: 4,
+    total_count: 8,
+    error_count: 1,
   }
 
   if (deep) {
-    res.rooms = [
+    res.children = [
       deviceResponse(1),
       deviceResponse(2),
       deviceResponse(3),
@@ -233,10 +245,17 @@ app.delete("/room/:room_id/device/:device_id", (req, res) => {
 })
 
 function deviceResponse(device_id) {
+  // Don't forget to clone some fields
+
   return {
+    // Don't forget to clone these fields
+    type: "device",
+    id: device_id,
+    name: "Device "+device_id,
+
     device_detail: {
       // Sent on add
-      device_name: "",
+      device_name: "Device "+device_id,
       device_air_type: {
         // Read Only
         airtype_id: 0,
