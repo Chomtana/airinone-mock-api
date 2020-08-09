@@ -84,6 +84,15 @@ function buildingResponse(building_id, deep=true) {
     online_count: 4,
     total_count: 8,
     error_count: 1,
+    S_online_count: 5,
+    S_total_count: 4,
+    S_error_count: 1,
+    V_online_count: 1,
+    V_total_count: 2,
+    V_error_count: 0,
+    C_online_count: 1,
+    C_total_count: 1,
+    C_error_count: 0,
   }
 
   if (deep) {
@@ -147,6 +156,15 @@ function floorResponse(floor_id, deep=true) {
     online_count: 4,
     total_count: 8,
     error_count: 1,
+    S_online_count: 5,
+    S_total_count: 4,
+    S_error_count: 1,
+    V_online_count: 1,
+    V_total_count: 2,
+    V_error_count: 0,
+    C_online_count: 1,
+    C_total_count: 1,
+    C_error_count: 0,
   }
 
   if (deep) {
@@ -206,6 +224,15 @@ function roomResponse(room_id, deep=true) {
     online_count: 4,
     total_count: 8,
     error_count: 1,
+    S_online_count: 5,
+    S_total_count: 4,
+    S_error_count: 1,
+    V_online_count: 1,
+    V_total_count: 2,
+    V_error_count: 0,
+    C_online_count: 1,
+    C_total_count: 1,
+    C_error_count: 0,
   }
 
   if (deep) {
