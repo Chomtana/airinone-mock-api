@@ -101,6 +101,10 @@ function buildingResponse(building_id, deep=true) {
       floorResponse(2, false),
       floorResponse(3, false),
       floorResponse(4, false),
+      floorResponse(5, false),
+      floorResponse(6, false),
+      floorResponse(7, false),
+      floorResponse(8, false),
     ]
   }
 
@@ -114,6 +118,30 @@ app.get("/buildings", (req, res) => {
     buildingResponse(3, false),
     buildingResponse(4, false),
   ])
+})
+
+app.get("/airs", (req, res) => {
+  console.log(req.query.search)
+
+  if (req.query.search) {
+    res.send([
+      deviceResponse(1, false),
+      deviceResponse(2, false),
+      deviceResponse(3, false),
+      deviceResponse(4, false),
+    ])
+  } else {
+    res.send([
+      deviceResponse(1, false),
+      deviceResponse(2, false),
+      deviceResponse(3, false),
+      deviceResponse(4, false),
+      deviceResponse(5, false),
+      deviceResponse(6, false),
+      deviceResponse(7, false),
+      deviceResponse(8, false),
+    ])
+  }
 })
 
 app.get("/building/:id", (req, res) => {
@@ -372,8 +400,16 @@ function deviceResponse(device_id) {
   }
 }
 
+function lastModifiedDeviceIdOf(type, id) {
+  return id;
+}
+
 app.get("/device/:id", (req, res) => {
   res.send(deviceResponse(req.params.device_id))
+})
+
+app.get("/device", (req, res) => {
+  res.send(deviceResponse(lastModifiedDeviceIdOf(req.query.scope_type, req.query.scope_id)))
 })
 
 app.post("/device", (req, res) => {
@@ -384,16 +420,20 @@ app.patch("/device/:id", (req, res) => {
   res.send(deviceResponse(req.params.device_id))
 })
 
-app.patch("/device_control_air/:id", (req, res) => {
-  res.send(deviceResponse(req.params.device_id))
+app.patch("/device", (req, res) => {
+  res.send(deviceResponse(lastModifiedDeviceIdOf(req.query.scope_type, req.query.scope_id)))
 })
 
-app.post("/device/:device_id/turn_on", (req, res) => {
-  res.send(deviceResponse(req.params.device_id))
+app.patch("/device_control_air", (req, res) => {
+  res.send(deviceResponse(lastModifiedDeviceIdOf(req.query.scope_type, req.query.scope_id)))
 })
 
-app.post("/device/:device_id/turn_off", (req, res) => {
-  res.send(deviceResponse(req.params.device_id))
+app.post("/device/turn_on", (req, res) => {
+  res.send(deviceResponse(lastModifiedDeviceIdOf(req.query.scope_type, req.query.scope_id)))
+})
+
+app.post("/device/turn_off", (req, res) => {
+  res.send(deviceResponse(lastModifiedDeviceIdOf(req.query.scope_type, req.query.scope_id)))
 })
 
 
