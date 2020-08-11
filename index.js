@@ -38,7 +38,7 @@ function userResponse(user_id) {
       user_id: user_id,
       user_display_language: "",
       user_display_temp: "",
-      user_nickname: "",
+      user_nickname: "Chomtana",
       user_picture: "",
       create_date: new Date(),
       modified_date: new Date(),
@@ -52,6 +52,14 @@ app.get("/user/:id", (req, res) => {
 
 app.patch("/user_detail/:id", (req, res) => {
   res.send(userResponse(req.params.id))
+})
+
+app.get("/me", (req, res) => {
+  if (req.header("Authorization")) {
+    res.send(userResponse())
+  } else {
+    res.sendStatus(403)
+  }
 })
 
 function buildingResponse(building_id, deep=true) {
@@ -350,12 +358,12 @@ function deviceResponse(device_id) {
       device_static_ip_address: "",
     
       // Control data
-      device_fan_speed: 0,
-      device_mode: "",
-      device_status: "",
-      device_swing_mode: 0,
+      device_fan_speed: "3",
+      device_mode: "2",
+      device_status: "1",
+      device_swing_mode: 1,
       device_is_locked_remote: "",
-      device_temp: 0,
+      device_temp: 26,
   
       // Insurance data
       device_air_buy_form: "",
