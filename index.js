@@ -299,13 +299,17 @@ app.delete("/room/:id", (req, res) => {
   res.sendStatus(204)
 })
 
-app.post("/room/:room_id/device/:device_id", (req, res) => {
+app.patch("/room/:room_id/device", (req, res) => {
+  res.send(roomResponse(req.params.room_id))
+});
+
+/*app.post("/room/:room_id/device/:device_id", (req, res) => {
   res.send(roomResponse(req.params.room_id))
 })
 
 app.delete("/room/:room_id/device/:device_id", (req, res) => {
   res.sendStatus(204)
-})
+})*/
 
 function deviceResponse(device_id) {
   // Don't forget to clone some fields
