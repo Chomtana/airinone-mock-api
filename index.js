@@ -366,7 +366,7 @@ function deviceResponse(device_id) {
       device_mode: "2",
       device_status: "1",
       device_swing_mode: 1,
-      device_is_locked_remote: "",
+      device_is_locked_remote: "S",
       device_temp: 26,
   
       // Insurance data
