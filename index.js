@@ -305,11 +305,11 @@ app.patch("/room/:room_id/device", (req, res) => {
 
 /*app.post("/room/:room_id/device/:device_id", (req, res) => {
   res.send(roomResponse(req.params.room_id))
-})
+})*/
 
 app.delete("/room/:room_id/device/:device_id", (req, res) => {
   res.sendStatus(204)
-})*/
+})
 
 function deviceResponse(device_id) {
   // Don't forget to clone some fields
@@ -319,8 +319,15 @@ function deviceResponse(device_id) {
     type: "device",
     id: device_id,
     name: "Device "+device_id,
+    position: {
+      top: 0.3,
+      left: 0.2,
+      width: 0.5,
+      height: 0.2,
+    },
 
     device_detail: {
+      device_id: device_id,
       // Sent on add
       device_name: "Device "+device_id,
       device_air_type: {
@@ -328,6 +335,12 @@ function deviceResponse(device_id) {
         airtype_id: 0,
         airtype_name: "",
         status: ""
+      },
+      position: {
+        top: 0.3,
+        left: 0.2,
+        width: 0.5,
+        height: 0.2,
       },
     
       // Modified later
