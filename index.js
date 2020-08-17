@@ -13,7 +13,7 @@ app.post("/login", (req, res) => {
 })
 
 app.post("/register", (req, res) => {
-  res.send({otp_secret: "blah"})
+  res.send({user_id: 1, otp_secret: "blah"})
 })
 
 app.post("/verify_otp", (req, res) => {
